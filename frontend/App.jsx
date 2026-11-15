@@ -16,7 +16,20 @@ const INITIAL = {
   b: urlParams.get('b'),
 };
 
+// navbar tabs
+const PAGES = [['explorer', 'Explorer'], ['how', 'How it works'], ['about', 'About us']];
+function pageFromHash() {
+  const h = window.location.hash.slice(1);
+  return PAGES.some(p => p[0] === h) ? h : 'explorer';
+}
+
 function App() {
+  const [page, setPage] = React.useState(pageFromHash);
+  React.useEffect(() => {
+    const onHash = () => setPage(pageFromHash());
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
   const [place, setPlace] = React.useState(null);
   const [busy, setBusy] = React.useState(false);
   const [radiusKm, setRadiusKm] = React.useState(INITIAL.radiusKm);
@@ -120,9 +133,16 @@ function App() {
   return (
     <div className="app">
       <header className="topbar">
-        <div className="brand"><span className="logo">N</span> NISAR Change Explorer</div>
-        <span className="badge">Provisional NISAR data · prototype</span>
+        <a className="brand" href="#explorer" aria-label="NISAR Change Explorer, go to the explorer">
+          <img className="brand-logo" src="assets/logo-wordmark-light.svg" alt="NISAR Change Explorer" />
+        </a>
+        <nav className="tabs" aria-label="Pages">
+          {PAGES.map(([key, label]) => (
+            <a key={key} href={`#${key}`} className={page === key ? 'on' : ''} aria-current={page === key ? 'page' : undefined}>{label}</a>
+          ))}
+        </nav>
       </header>
+      <div className="stage">
       <div className="layout">
         <aside className="sidebar">
           <SearchPanel place={place} onSearch={search} onPickPlace={hit => searchAt(hit)} busy={busy}
@@ -147,6 +167,13 @@ function App() {
               onHotspot={(h, i) => setFocus({ ...h, n: i + 1, t: Date.now() })} />
           )}
         </main>
+      </div>
+      {/* other pages */}
+      {page !== 'explorer' && (
+        <div className="page-wrap" key={page}>
+          {page === 'how' ? <HowItWorks /> : <AboutPage />}
+        </div>
+      )}
       </div>
     </div>
   );
