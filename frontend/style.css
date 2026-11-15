@@ -228,3 +228,11 @@ ul.wx-story li.warn { background: #fef3c7; }
 ul.wx-story li.look { background: #ecfdf5; }
 .wx-src { font-size: 10.5px; margin-top: 6px; }
 .hs-popup .error { color: #b91c1c; }
+
+/* report download */
+.report-download { margin: 0 0 12px; }
+.download-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 8px;
+  background: transparent; color: var(--accent); border: 1px solid var(--accent); font-weight: 600; }
+.download-btn:hover:not(:disabled) { background: var(--accent); color: #062b24; }
+.download-btn:disabled { opacity: .8; cursor: progress; }
+.report-download .error { margin-top: 6px; }

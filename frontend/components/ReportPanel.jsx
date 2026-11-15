@@ -19,6 +19,8 @@ function ReportPanel({ job, onHotspot, onClose }) {
         <button type="button" className="icon-btn" onClick={onClose} aria-label="Close report" title="Close report">✕</button>
       </div>
 
+      <ReportDownloadButton job={job} />
+
       <div className={`hero lvl-${r.level}`}>
         <span className="hero-icon" aria-hidden="true">{icon}</span>
         <div>
