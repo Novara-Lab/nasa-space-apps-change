@@ -1,0 +1,13 @@
+# python 3.13
+fastapi==0.162.7
+uvicorn[standard]==0.54.0
+httpx==0.28.1
+python-dotenv==1.2.4
+earthaccess==0.19.0
+asf_search==14.1.0
+h5py==3.16.0
+numpy==2.5.4
+pyproj==3.8.0
+rasterio==1.5.2
+pillow==13.0.0
+matplotlib==3.11.2
