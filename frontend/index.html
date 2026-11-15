@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NISAR Change Explorer</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- libraries -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+
+  <script src="api.js"></script>
+
+  <!-- components (order matters) -->
+  <script type="text/babel" data-presets="react" src="components/SearchPanel.jsx"></script>
+  <script type="text/babel" data-presets="react" src="components/ObservationList.jsx"></script>
+  <script type="text/babel" data-presets="react" src="components/HotspotPopup.jsx"></script>
+  <script type="text/babel" data-presets="react" src="components/ExplorerMap.jsx"></script>
+  <script type="text/babel" data-presets="react" src="components/ChangePanel.jsx"></script>
+  <script type="text/babel" data-presets="react" src="components/ReportPanel.jsx"></script>
+  <script type="text/babel" data-presets="react" src="App.jsx"></script>
+</body>
+</html>
